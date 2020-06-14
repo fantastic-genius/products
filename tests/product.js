@@ -20,6 +20,19 @@ describe('Testing Products', () => {
             expect(res.body).to.have.all.keys(['id', 'name', 'description', 'created_at']);
             expect(res.body.name).to.equals('Adidas T-shirt');
         });
-    })
+
+        it('Should return status 404 and error if product name is empty', async () => {
+            const res = await chai
+                .request(app)
+                .post('/api/v1/products')
+                .send({
+                    name: ' ',
+                    description: 'This is a white shirt',
+                });
+            expect(res.status).to.equals(400);
+            expect(res.body).to.be.an('object');
+            expect(res.body.error).to.equals('Product name is required');
+        })
+    });
 })
 

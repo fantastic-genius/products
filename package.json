@@ -4,7 +4,7 @@
   "description": "An app for adding and viewing products",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha --timeout 10000 --require @babel/register --require @babel/polyfill tests/*.js",
+    "test": "mocha --timeout 10000 --require @babel/register --require @babel/polyfill tests/*.js",
     "start": "babel-node ./index.js",
     "dev:start": "nodemon --exec babel-node ./index.js",
     "createProductTable": "babel-node  ./migrations/products.js default createProductTable"
